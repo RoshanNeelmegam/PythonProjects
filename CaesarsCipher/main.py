@@ -18,7 +18,7 @@ Press e for encode or d for decode or q to exit: """).lower()
         new_word_list = []
         for letter in word_list:
             if letter.lower() in alphabet:
-                position = alphabet.index(letter)
+                position = alphabet.index(letter.lower())
                 new_position = (position + shift) % 26
                 new_word_list.append(alphabet[new_position])
             else:
@@ -31,7 +31,7 @@ Press e for encode or d for decode or q to exit: """).lower()
         new_word_list = []
         for letter in word_list:
             if letter.lower() in alphabet:
-                position = alphabet.index(letter)
+                position = alphabet.index(letter.lower())
                 new_position = (position - shift) % 26
                 if new_position < 0:
                     new_position*= -1
@@ -45,4 +45,4 @@ Press e for encode or d for decode or q to exit: """).lower()
         print("oops thats a typo!")
 
 
-   
+  
