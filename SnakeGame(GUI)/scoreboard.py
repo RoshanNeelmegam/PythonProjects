@@ -16,18 +16,25 @@ class Scoreboard(Turtle):
         self.write(f"Score: {self.score}", align="center", font=("Arial", 20, "normal"))
       
       def collisionWithFood(self, snake, food):
-           print(snake.snake_body[0].distance(food))
-           if snake.snake_body[0].distance(food) <= 21:
+           # The .distance method returns the distance between the other turtle
+           if snake.snake_body[0].distance(food) <= 25:
              food.update()
+             snake.extend()
              self.score_update()
 
       def collisionWithWall(self, snake):
           if snake.snake_body[0].xcor() > 295 or snake.snake_body[0].xcor() < -295 or snake.snake_body[0].ycor() > 295 or snake.snake_body[0].ycor() < -295:
-            self.clear()
-            self.goto(0, 0)
-            self.write("Game Over", align="center", font=("Arial", 25, "normal"))
-            self.goto(0, -30)
-            self.write(f"Score is {self.score}", align="center", font=("Arial", 18, "normal"))
-            return '1'
+            self.end_score()
+            return 1
           else:
-            return '0'
+            return 0
+
+      def end_score(self):
+        self.clear()
+        self.goto(0, 0)
+        self.write("Game Over", align="center", font=("Arial", 25, "normal"))
+        self.goto(0, -30)
+        self.write(f"Score is {self.score}", align="center", font=("Arial", 18, "normal"))
+
+
+ 
