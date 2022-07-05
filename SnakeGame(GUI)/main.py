@@ -33,13 +33,19 @@ is_game_on = True
 
 while is_game_on:
     screen.update()
+    time.sleep(0.099)
     snake.move()
-    snake.update()
     score.collisionWithFood(snake, food)
-    if score.collisionWithWall(snake) == '1': 
+    if score.collisionWithWall(snake) == 1:
         is_game_on = False
-    time.sleep(0.12)
 
+    #detecting collisions with itself
+    for segments in snake.snake_body:
+        if snake.snake_body.index(segments) == 0:
+            pass
+        elif snake.snake_body[0].distance(segments) < 10:
+            is_game_on = False
+            score.end_score()
 
 
 
